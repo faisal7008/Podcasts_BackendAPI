@@ -22,6 +22,8 @@ const connectDB = async () => {
       useNewUrlParser: true,
     });
     console.log("MongoDB is Connected...");
+    // Start server
+    app.listen(process.env.PORT || 9000, () => console.log("Server started"));
   } catch (err) {
     console.error(err.message);
     process.exit(1);
@@ -34,6 +36,3 @@ connectDB();
 app.use("/users", userRouter);
 app.use("/podcasts", podcastRouter);
 app.use("/playbacks", playbackRouter);
-
-// Start server
-app.listen(process.env.PORT || 9000, () => console.log("Server started"));
